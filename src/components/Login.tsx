@@ -19,6 +19,7 @@ const Login: React.FC = () => {
         setPending(true);
 
         try {
+            event.preventDefault()
             const res = await signIn('credentials', {
                 redirect: false,
                 email,
