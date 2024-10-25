@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { login } from "../../../../../actions/login";
@@ -8,7 +8,7 @@ interface ICredentials {
     password: string;
   }
   
-  export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
     providers: [
       CredentialsProvider({
         name: "credentials",
@@ -43,6 +43,6 @@ interface ICredentials {
     secret: process.env.NEXTAUTH_SECRET
   };
   
-  export const handler = NextAuth(authOptions);
-  
+  const handler = NextAuth(authOptions);
+
   export { handler as GET, handler as POST };
